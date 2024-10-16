@@ -96,7 +96,7 @@ export async function getServerSideProps({ query }) {
 
   return {
     props: {
-      properties: data?.hits,
+      properties: data?.hits.slice(0, 24)
     },
   };
 }
