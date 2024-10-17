@@ -11,4 +11,20 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.dark {
+  --color-bg-primary: #2d3748;
+  --color-bg-secondary: #283141;
+  --color-text-primary: #dbdbdb;
+  --color-border-primary: #e2e8f0;
+  --color-text-secondary: #e2e8f0;
+}
+
+.light {
+  --color-bg-primary: #e9e9e9;
+  --color-bg-secondary: #edf2f7;
+  --color-text-primary: #2d3748;
+  --color-border-primary: #2d3748;
+  --color-text-secondary: #4a5568;
+}
+
 

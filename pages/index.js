@@ -35,7 +35,7 @@ const Banner = function({
       maxWidth="1200px"
       m="0 auto"
     >
-      <Image src={imageUrl} width={500} height={300} alt="banner" />
+      <Image src={imageUrl} width={500} height={300} alt="banner" style={{ width: 'auto', height: 'auto' }} priority />
       <Box p="5">
         <Text fontSize="sm" color="gray.500" fontWeight="medium">
           {purpose}

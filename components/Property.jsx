@@ -17,7 +17,7 @@ const Property = ({ property: { coverPhoto, price, rentFrequency, rooms, title, 
           src={coverPhoto ? coverPhoto.url : DefaultImage} 
           width={400}
           height={260}
-          objectFit='contain' 
+          style={{ objectFit: 'contain' }}
           alt="property image"
         />
       </Box>
