@@ -1,19 +1,18 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { HiSun, HiMoon } from 'react-icons/hi';
-import { ThemeContext } from '../context/ThemeContext'; // Use Chakra's context
-import { Flex, Text } from '@chakra-ui/react';
+import { useColorMode, Flex, Text } from '@chakra-ui/react';
 
 const ThemeToggle = () => {
-  const { theme, toggleColorMode } = useContext(ThemeContext); // Make sure you use Chakra's context
+  const { colorMode, toggleColorMode } = useColorMode();
 
   return (
     <div>
-      {theme === 'dark' ? (
+      {colorMode === 'dark' ? (
         <Flex
           alignItems="center"
           fontSize="sm"
           cursor="pointer"
-          onClick={toggleColorMode}
+          onClick={toggleColorMode} // Toggle between dark/light
         >
           <HiSun style={{ fontSize: '24px', marginRight: '8px' }} />
           <Text>Light Mode</Text>
@@ -23,7 +22,7 @@ const ThemeToggle = () => {
           alignItems="center"
           fontSize="sm"
           cursor="pointer"
-          onClick={toggleColorMode}
+          onClick={toggleColorMode} // Toggle between light/dark
         >
           <HiMoon style={{ fontSize: '24px', marginRight: '12px' }} />
           <Text>Dark Mode</Text>

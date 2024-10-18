@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Menu, MenuButton, MenuList, MenuItem, IconButton, Flex, Box, Spacer } from '@chakra-ui/react';
-import { FcMenu, FcHome, FcAbout } from 'react-icons/fc';
+import { FcHome, FcAbout } from 'react-icons/fc';
 import { BsSearch } from 'react-icons/bs';
 import { FiKey } from 'react-icons/fi';
-import ThemeToggle from './ThemeToggle';
 import { useColorModeValue } from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons'; // Use Chakra's built-in icon for better styling control
+import ThemeToggle from './ThemeToggle';
 
 const Navbar = () => {
   const [isSticky, setIsSticky] = useState(false);
 
   const backgroundColor = useColorModeValue('white', 'gray.800'); // Light mode: white, Dark mode: gray
   const textColor = useColorModeValue('black', 'white'); // Light mode: black, Dark mode: white
+  const menuIconColor = useColorModeValue('gray.600', 'gray.400'); // Color for the menu icon
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +36,7 @@ const Navbar = () => {
       p="2"
       px="6.5rem"
       borderBottom="1px"
-      borderColor="gray.100"
+      borderColor="gray.400"
       alignItems="center"
       position={isSticky ? 'fixed' : 'relative'}
       top={0}
@@ -53,7 +55,12 @@ const Navbar = () => {
       <Spacer />
       <Box>
         <Menu>
-          <MenuButton as={IconButton} icon={<FcMenu size={31} />} variant="outlined" />
+          <MenuButton
+            as={IconButton}
+            icon={<HamburgerIcon style={{fontSize: '25px'}}/>} // Use Chakra's icon for better control
+            variant="outline"
+            color={menuIconColor}  // Set menu icon color dynamically
+          />
           <MenuList>
             <Link href="/" passHref>
               <MenuItem icon={<FcHome />}>Home</MenuItem>

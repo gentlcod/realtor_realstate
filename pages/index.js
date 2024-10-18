@@ -37,7 +37,7 @@ const Banner = function({
     >
       <Image src={imageUrl} width={500} height={300} alt="banner" style={{ width: 'auto', height: 'auto' }} priority />
       <Box p="5">
-        <Text fontSize="sm" color="gray.500" fontWeight="medium">
+        <Text fontSize="sm" fontWeight="medium">
           {purpose}
         </Text>
         <Text fontSize="3xl" fontWeight="bold">
@@ -45,7 +45,7 @@ const Banner = function({
           <br />
           {title2}
         </Text>
-        <Text fontSize="lg" pb="3" pt="3" color="gray.700">
+        <Text fontSize="lg" pb="3" pt="3">
           {desc1}
           <br />
           {desc2}
@@ -71,6 +71,7 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
           buttonText="Explore Renting"
           linkName="/search?purpose=for-rent"
           overflow="hidden" borderRadius="10px"
+          priority
           imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/145426814/33973352624c48628e41f2ec460faba4"
         />
         <Flex flexWrap="wrap" justifyContent="center">
@@ -88,6 +89,7 @@ export default function Home({ propertiesForSale, propertiesForRent }) {
           buttonText="Explore Buying"
           linkName="/search?purpose=for-sale"
           imageUrl="https://bayut-production.s3.eu-central-1.amazonaws.com/image/110993385/6a070e8e1bae4f7d8c1429bc303d2008"
+          priority
         />
 
         <Flex flexWrap="wrap" justifyContent="center">

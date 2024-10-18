@@ -1,9 +1,10 @@
 import Router from "next/router";
 import Head from "next/head";
 import NProgress from "nprogress";
-import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
-import { ThemeProvider } from "@/context/ThemeContext";
+import { ChakraProvider, ColorModeScript, useColorMode } from "@chakra-ui/react";
 import Layout from '../components/Layout.jsx';
+import { Global } from "@emotion/react";
+import theme from '../styles/theme';
 
 export default function App({ Component, pageProps }) {
   NProgress.configure({ showSpinner: false });
@@ -16,6 +17,23 @@ export default function App({ Component, pageProps }) {
     NProgress.done();
   });
 
+  // Global styles based on color mode
+  const GlobalStyles = () => {
+    const { colorMode } = useColorMode();  // Access color mode using Chakra's hook
+
+    return (
+      <Global
+        styles={{
+          body: {
+            backgroundColor:
+              colorMode === 'dark' ? theme.colors.gray[800] : theme.colors.gray[50],
+            color: colorMode === 'dark' ? 'silver' : 'black',
+          },
+        }}
+      />
+    );
+  };
+
   return (
     <>
       <Head>
@@ -26,13 +44,15 @@ export default function App({ Component, pageProps }) {
           referrerPolicy="no-referrer"
         />
       </Head>
-      <ThemeProvider>
-        <ChakraProvider>
-          <Layout>
-            <Component {...pageProps} />
-          </Layout>
-        </ChakraProvider>
-      </ThemeProvider>
+      {/* ColorModeScript ensures the correct theme is applied on initial load */}
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+      <ChakraProvider theme={theme}>
+        {/* Apply global styles for light/dark mode */}
+        <GlobalStyles />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ChakraProvider>
     </>
   );
 }

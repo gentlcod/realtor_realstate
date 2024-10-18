@@ -10,9 +10,8 @@ const Footer = () => {
     textAlign='center'
     p='5'
     px='6.5rem'
-    color='gray.600'
     borderTop='1px'
-    borderColor='gray.100'
+    borderColor='gray.500'
     >
       &copy;{year} Realtor, Inc.
     </Box>
